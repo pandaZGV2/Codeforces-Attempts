@@ -3,13 +3,17 @@
 using namespace std;
 
 typedef long long ll;
+typedef unsigned long long int ull;
+typedef long int li;
 typedef vector<int> vi;
 typedef pair<int, int> pi;
 
-#define f first
-#define s second
+// #define f first
+// #define s second
 #define pb push_back
 #define mp make_pair
+#define modint int(1e9 + 7)
+#define mod 1e9 + 7
 #define loop(n) for (int i = 0; i < n; i++)
 #define rep(i, a, n) for (int i = a; i < n; i++)
 #define file_read                     \
@@ -21,35 +25,32 @@ typedef pair<int, int> pi;
     while (t--)
 #define endl "\n"
 #define iamspeed cin.tie(0)->sync_with_stdio(0)
-
 int main(void)
 {
-    //iamspeed;
+    iamspeed;
     int t;
     cin >> t;
     while (t--)
     {
-        int n;
-        cin >> n;
-        vector<pair<int, int>> p;
-        int s = 0;
-        int t, x, x1 = 0, t1 = 0,prev=0;
-        bool f1, f2;
-        for (int i = 0; i < n; i++)
+        string s;
+        bool f = true;
+        int s1 = 0, s2 = 0, s3 = 0;
+        cin >> s;
+        if (s.size() % 2 != 0)
         {
-            cin >> t >> x;
-            prev=x1;
-            if (t1 <= t)
-            {
-                t1 += t - t1 + abs(x - x1);
-                x1 += x;
-                p.push_back(make_pair(t, x));
-            }
-            if(x<=x1 && x>=prev)
-            {
-                s++;
-            }
+            cout << "NO\n";
+            continue;
         }
-        cout << s << endl;
+        if ((s[0] != ')' && s[s.size() - 1] != '('))
+        {
+            f = true;
+        }
+        else
+        {
+            f = false;
+        }
+        (f) ? cout << "YES" << endl : cout << "NO\n";
     }
+
+    return 0;
 }
