@@ -33,56 +33,32 @@ int main(void)
     while (t--)
     {
         int n;
+        int s=0;
         cin >> n;
         vi a(2 * n + 2, 0);
-        vi b(2 * n + 2, 0);
         int c;
-        int s = 0;
-        for (int i = 0; i < n; i++)
+        for(int i=0;i<n;i++)
         {
-            cin >> c;
-            a[c - 1]++;
-        }
-        for (int i = 0; i < 2 * n; i++)
-        {
-            if (a[i] >= 1 && a[i+1]==0)
+            cin>>c;
+            if(a[c-1]==0)
             {
-                b[i] = b[i] + a[i]-1;
-                b[i + 1] = b[i + 1] + 1;
+                a[c-1]++;
+            }
+            else
+            {
+                a[c]++;
             }
         }
-        if(a[2*n-1]>1)
+        for(int i=0;i<2*n;i++)
         {
-            b[2*n]++;
+            if(a[i]!=0)
+            s++;
+            // cout<<a[i]<<" ";
         }
-        // for (int i = 0; i < 2 * n; i++)
-        // {
-        //     if (b[i] > 1)
-        //     {
-        //         b[i + 1] = b[i + 1] + b[i] - 1;
-        //     }
-        // }
-        // b[2 * n - 1] += a[2 * n - 1];
-        int i;
-        for (i = 0; i <= 2 * n; i++)
-        {
-            if (b[i] > 0)
-            {
-                s++;
-            }
-            cout << b[i] << " ";
-        }
-        cout << endl;
-        for(int i=0;i<=2*n;i++)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<endl;
-        // if (a[i] > 1)
-        //     s += 2;
-        // else if (b[i] > 0)
-        //     s++;
-        cout << s << endl;
+        if(a[2*n]!=0)
+        s++;
+        // cout<<a[2*n]<<endl;
+        cout<<s<<endl;
     }
 
     return 0;
