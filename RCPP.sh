@@ -1,12 +1,11 @@
 FILE=a.out
 PROG_NAME=$1
+contest_number=$(echo $PROG_NAME | sed -r -e "s/(^.+?[0-9])[A-Z]\.+?/\1/")
+qno_letter=$(echo $PROG_NAME | sed -r -e "s/^.+?[0-9]([A-Z])\.*/\1/")
+eval "python3 cftestcase.py $contest_number $qno_letter"
 if !(test -f "$PROG_NAME"); then
     echo "$PROG_NAME does not exist!"
     exit 0
-else
-    contest_number=$(echo $PROG_NAME | sed -r -e "s/(^.+?[0-9])[A-Z]\.+?/\1/")
-    qno_letter=$(echo $PROG_NAME | sed -r -e "s/^.+?[0-9]([A-Z])\.*/\1/")
-    eval "python3 cftestcase.py $contest_number $qno_letter"
 fi
 if test -f "$FILE"; then
     echo "$FILE removed!"
