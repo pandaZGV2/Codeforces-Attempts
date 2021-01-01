@@ -25,47 +25,34 @@ typedef pair<int, int> pi;
     while (t--)
 #define endl "\n"
 #define iamspeed cin.tie(0)->sync_with_stdio(0)
-bool isPalindrome(string s)
+#define N 100007
+int n;
+char in[N+1];
+bool used[N];
+
+void solve()
 {
-    int l = 0;
-    int h = s.size() - 1;
-    while (h > l)
+    scanf("%s", in);
+    n = strlen(in);
+
+    for (int i = 1; i <= n; ++i)
+        used[i] = false;
+
+    int ans = 0;
+    for (int i = 2; i <= n; ++i)
     {
-        if (s[l++] != s[h--])
-        {
-            return false;
-        }
+        bool use_need = false;
+        if (in[i] == in[i - 1] && !used[i - 1])
+            use_need = true;
+
+        if (i > 2 && in[i] == in[i - 2] && !used[i - 2])
+            use_need = true;
+
+        used[i] = use_need;
+        ans += used[i];
     }
-    return true;
-}
-void subString(string s, int n, int &c)
-{
-    for (int len = 2; len <= n; len++)
-    {
-        for (int i = 0; i <= n - len; i++)
-        {
-            string s1;
-            int j = i + len - 1;
-            int k;
-            for (k = i; k <= j; k++)
-            {
-                s1 += s[k];
-            }
-            if (isPalindrome(s1))
-            {
-                for (char f = 'a'; f <= 'z'; f++)
-                {
-                    string s2;
-                    s2+=f;
-                    if (s1.find(s2) != string::npos)
-                    {
-                        s[(i + j) / 2] = f;
-                    }
-                }
-                c++;
-            }
-        }
-    }
+
+    printf("%d\n", ans);
 }
 int main(void)
 {
@@ -75,18 +62,7 @@ int main(void)
     int c = 0;
     while (t--)
     {
-        string s;
-        c = 0;
-        cin >> s;
-        // if(s.size()>=3)
-        subString(s, s.size(), c);
-        // else if(s.size()==2)
-        // {
-        //     if(s[0]==s[1])
-        //     c++;
-        // }
-
-        cout << c << endl;
+        solve();
     }
 
     return 0;
