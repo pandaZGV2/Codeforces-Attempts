@@ -25,38 +25,30 @@ typedef pair<int, int> pi;
     while (t--)
 #define endl "\n"
 #define iamspeed cin.tie(0)->sync_with_stdio(0)
-// ull gcd(ull a, ull b)
-// {
-//     if (a == 0)
-//         return b;
-//     return gcd(b % a, a);
-// }
 int main(void)
 {
     iamspeed;
+    vector<pi> a;
+    int b, c;
     int n;
-    int m;
-    cin >> n >> m;
-    ll b;
-    // for (int i = 0; i < n; i++)
-    // {
-    //     cin >> a[i];
-    // }
-    // int g=abs(a[1]-a[0]);
-    ll g=0;
-    ll x;
-    ll init;
-    cin>>init;
-    for(int i=1;i<n;i++)
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        cin>>x;
-        g=__gcd(abs(x-init),g);
+        cin >> b >> c;
+        a.pb(mp(b, c));
     }
-    for(int i=0;i<m;i++)
+    int s = 0;
+    float m = 0;
+    for (int i = 0; i < n - 1; i++)
     {
-        cin>>b;
-        cout<<__gcd(init+b,g)<<" ";
+        for (int j = i + 1; j < n; j++)
+        {
+            m = float(a[j].s - a[i].s) / (a[j].f - a[i].f);
+            if (m <= 1 and m >= -1)
+                s++;
+        }
     }
+    cout<<s<<endl;
 
     return 0;
 }

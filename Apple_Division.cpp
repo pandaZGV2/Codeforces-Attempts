@@ -12,8 +12,8 @@ typedef pair<int, int> pi;
 #define s second
 #define pb push_back
 #define mp make_pair
-#define modint int(1e9 + 7)
-#define mod 1e9 + 7
+#define modint int(1e9+7)
+#define mod 1e9+7
 #define loop(n) for (int i = 0; i < n; i++)
 #define rep(i, a, n) for (int i = a; i < n; i++)
 #define file_read                     \
@@ -25,38 +25,47 @@ typedef pair<int, int> pi;
     while (t--)
 #define endl "\n"
 #define iamspeed cin.tie(0)->sync_with_stdio(0)
-// ull gcd(ull a, ull b)
-// {
-//     if (a == 0)
-//         return b;
-//     return gcd(b % a, a);
-// }
+vi x;
+void test(int n)
+{
+    ll s1,s2,px=0;
+    min
+    for(int i=0;i<n;i++)
+    {
+        if(x[px]==i)
+        {
+            s1+=a[x[px]];
+            px++;
+        }
+        else
+        {
+            s2+=a[i];
+        }
+        
+        
+    }
+}
+void solve(ll i,int n)
+{
+    if(i==n)
+    {
+        test(n);
+        return;
+    }
+    x.pb((i));
+    solve(i+1);
+    x.pop_back();
+}
 int main(void)
 {
     iamspeed;
     int n;
-    int m;
-    cin >> n >> m;
-    ll b;
-    // for (int i = 0; i < n; i++)
-    // {
-    //     cin >> a[i];
-    // }
-    // int g=abs(a[1]-a[0]);
-    ll g=0;
-    ll x;
-    ll init;
-    cin>>init;
-    for(int i=1;i<n;i++)
+    cin>>n;
+    vi a(n,0);
+    for(int i=0;i<n;i++)
     {
-        cin>>x;
-        g=__gcd(abs(x-init),g);
-    }
-    for(int i=0;i<m;i++)
-    {
-        cin>>b;
-        cout<<__gcd(init+b,g)<<" ";
+        cin>>a[i];
     }
 
-    return 0;
+  return 0;
 }

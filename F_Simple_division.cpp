@@ -25,6 +25,18 @@ typedef pair<int, int> pi;
     while (t--)
 #define endl "\n"
 #define iamspeed cin.tie(0)->sync_with_stdio(0)
+int euclidean_remainder(int a, int b)
+{
+  assert(b != 0);
+  int r = a % b;
+  return r >= 0 ? r : r + std::abs(b);
+}
+int gcd(int a, int b)
+{
+    if (a == 0)
+        return b;
+    return gcd((b%a+a)%a, a);
+}
 int main(void)
 {
     iamspeed;
@@ -44,31 +56,24 @@ int main(void)
             cin >> c;
         }
         int dmax = 1;
+
         if (m != 0)
         {
-            for (int i = 2; i <= abs(min) + 1; i++)
+            dmax=1;
+            for (int r = 0; r < min; r++)
             {
-                bool f1 = false;
-                int r = ((v[0] % i) + i) % i;
-                for (int j = 1; j < v.size(); j++)
+                int g = v[0] - r;
+                for (int i = 1; i < v.size(); i++)
                 {
-                    if (((v[j] % i) + i) % i == r)
-                    {
-                        f1 = true;
-                    }
-                    else
-                    {
-                        f1 = false;
-                        break;
-                    }
+                    g = gcd(v[i] - r, g);
                 }
-                if (f1)
-                {
-                    dmax = i;
-                }
+                if (g > dmax)
+                    dmax = g;
+                    cout<<dmax<<endl;
             }
             cout << dmax << endl;
         }
+
     } while (m != 0);
 
     return 0;

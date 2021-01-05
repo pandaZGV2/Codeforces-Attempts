@@ -12,8 +12,8 @@ typedef pair<int, int> pi;
 #define s second
 #define pb push_back
 #define mp make_pair
-#define modint int(1e9 + 7)
-#define mod 1e9 + 7
+#define modint int(1e9+7)
+#define mod 1e9+7
 #define loop(n) for (int i = 0; i < n; i++)
 #define rep(i, a, n) for (int i = a; i < n; i++)
 #define file_read                     \
@@ -25,38 +25,24 @@ typedef pair<int, int> pi;
     while (t--)
 #define endl "\n"
 #define iamspeed cin.tie(0)->sync_with_stdio(0)
-// ull gcd(ull a, ull b)
-// {
-//     if (a == 0)
-//         return b;
-//     return gcd(b % a, a);
-// }
 int main(void)
 {
     iamspeed;
-    int n;
-    int m;
-    cin >> n >> m;
-    ll b;
-    // for (int i = 0; i < n; i++)
-    // {
-    //     cin >> a[i];
-    // }
-    // int g=abs(a[1]-a[0]);
-    ll g=0;
-    ll x;
-    ll init;
-    cin>>init;
-    for(int i=1;i<n;i++)
+    int a,b;
+    cin>>a>>b;
+    int s1=0,s2=0;
+    while(a>0)
     {
-        cin>>x;
-        g=__gcd(abs(x-init),g);
+        s1+=a%10;
+        a=a/10;
     }
-    for(int i=0;i<m;i++)
+    while(b>0)
     {
-        cin>>b;
-        cout<<__gcd(init+b,g)<<" ";
+        s2+=b%10;
+        b=b/10;
     }
+    cout<<max(s1,s2);
 
-    return 0;
+
+  return 0;
 }
