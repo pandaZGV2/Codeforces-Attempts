@@ -9,7 +9,7 @@ typedef vector<int> vi;
 typedef pair<int, int> pi;
 
 #define f first
-#define s second
+//#define s second
 #define pb push_back
 #define mp make_pair
 #define modint int(1e9 + 7)
@@ -25,48 +25,40 @@ typedef pair<int, int> pi;
     while (t--)
 #define endl "\n"
 #define iamspeed cin.tie(0)->sync_with_stdio(0)
-int euclidean_remainder(int a, int b)
-{
-    assert(b != 0);
-    int r = a % b;
-    return r >= 0 ? r : r + std::abs(b);
-}
-ll gcd(ll a, ll b)
-{
-    if (a == 0)
-        return b;
-    return gcd((b % a + a) % a, a);
-}
 int main(void)
 {
     iamspeed;
-    int m;
-    do
+    int t;
+    cin >> t;
+    while (t--)
     {
-        vi v;
-        int min = INT_MAX;
-        int c;
-        cin >> c;
-        m = c;
-        while (c != 0)
+        ull n, x;
+        cin >> n >> x;
+        vector<pair<int, int>> a(n, {0, 0});
+        ull s = 0;
+        for (int i = 0; i < n; i++)
         {
-            v.pb(c);
-            if (min > c)
-                min = c;
-            cin >> c;
+            cin >> a[i].f;
+            a[i].second = 1;
+            s += a[i].f;
         }
-
-        if (m != 0)
+        for (int i = 0; i < a.size(); i++)
         {
-            ll g=0;
-            for (int i = 0; i < v.size(); i++)
+            if (a[i].f % x == 0)
             {
-                    g = gcd(v[i] - min, g);//Taking minimum to maximize d, if n1=q1d+r.n2=q2d+r,...., then d is the gcd of n2-n1,n3-n1 and so on.
+                a.pb({a[i].f / x, x * a[i].second});
             }
-            cout<<g<<endl;
+            else
+            {
+                break;
+            }
         }
-
-    } while (m != 0);
+        for (int i = n; i < a.size(); i++)
+        {
+            s += a[i].f * a[i].second;
+        }
+        cout << s << endl;
+    }
 
     return 0;
 }
