@@ -31,9 +31,9 @@ int main(void)
     int n, m;
     cin >> n >> m;
     int a, b;
-    vector<vi> adj(5051);
+    vector<int> adj[200];
     int ans = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
     {
         cin >> a >> b;
         adj[a].pb(b);
@@ -44,7 +44,7 @@ int main(void)
     {
         f = false;
         vi list;
-        for (int i = 1; i <= 5050; i++)
+        for (int i = 1; i <= n; i++)
         {
             if (adj[i].size() == 1)
             {
@@ -57,10 +57,10 @@ int main(void)
             for (auto i : list)
             {
                 adj[adj[i][0]].erase(remove(adj[adj[i][0]].begin(), adj[adj[i][0]].end(), i), adj[adj[i][0]].end());
-                adj[i].erase(adj[i].begin());
-                cout<<i<<" ";
+                adj[i].pop_back();
+                // cout << i << " ";
             }
-            cout<<endl;
+            // cout << endl;
             ans++;
         }
     }
