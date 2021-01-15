@@ -28,65 +28,38 @@ typedef pair<int, int> pi;
 int main(void)
 {
     iamspeed;
-    int t;
-    cin >> t;
-    while (t--)
+    tc
     {
         int n;
         cin >> n;
-        vi a(n, 0);
+        vi a(n + 4, 0);
         for (int i = 0; i < n; i++)
         {
             cin >> a[i];
         }
-        bool f = 1;
-        int cnt = 0;
-        for (int i = 0; i < n; i++)
+        int turn = 0;
+        int ans = 0;
+        for (int i = 0; i < n;)
         {
-            if (f)
-            {
-                if (a[i] == 0)
-                {
-                    if (i < n - 1 && a[i + 1] == 0)
-                    {
-                        i++;
-                    }
-                }
-                else
-                {
-                    cnt++;
-                    if (i<n-1 && a[i+1] == 1)
-                    {
-                        cnt++;
-                    }
-                    else
-                    {
-                        i++;
-                    }
-                    
-                }
-                f = 0;
-            }
-            else
+            if (turn % 2 == 0)
             {
                 if (a[i] == 1)
                 {
-                    if (i < n - 1 && a[i + 1] == 1)
-                    {
-                        i++;
-                    }
+                    ans++;
                 }
-                else
-                {
-                    if (i < n - 1 && a[i + 1] == 1)
-                    {
-                        i++;
-                    }
-                }
-                f = 1;
+                i++;
+                if (a[i] == 0 && a[i + 1] == 1)
+                    i++;
             }
+            else
+            {
+                i++;
+                if (a[i] == 1)
+                    i++;
+            }
+            turn++;
         }
-        cout << cnt << endl;
+        cout << ans << endl;
     }
     return 0;
 }
