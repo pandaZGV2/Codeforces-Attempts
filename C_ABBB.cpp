@@ -38,17 +38,33 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n, k;
-        cin >> n >> k;
-        for (int i = 1; i < k - (n - k); i++)
+        string s;
+        cin >> s;
+        // stack<char> a;
+        // for (int i = 0; i < s.size(); i++)
+        // {
+        //     a.push(s[i]);
+        // }
+        stack<char> b;
+        for (int i = 0; i < s.size(); i++)
         {
-            cout << i << " ";
+            if (s[i] == 'A')
+            {
+                b.push(s[i]);
+            }
+            else
+            {
+                if (!b.empty())
+                {
+                    b.pop();
+                }
+                else
+                {
+                    b.push(s[i]);
+                }
+            }
         }
-        for (int i = k; i >= k - (n - k); i--)
-        {
-            cout << i << " ";
-        }
-        cout << endl;
+        cout << b.size() << endl;
     }
 
     return 0;
