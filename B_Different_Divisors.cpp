@@ -24,10 +24,10 @@ typedef pair<int, int> pi;
     cout.tie(0);
 ll n;
 vector<bool> is_prime(1e6 + 1, 1);
-void sieve()
+void sieve()//sieve of eratosthenes
 {
     is_prime[0] = is_prime[1] = 0;
-    for (int i = 2; i <= sqrt(n); i++)
+    for (int i = 2; i*i; i++)
     {
         if (is_prime[i])
         {
