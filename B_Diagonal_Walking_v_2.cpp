@@ -25,27 +25,24 @@ int main()
         }
         else
         {
-            long long int rem=k-d;
-            if(x==y)
+            long long int rem = k - d;
+            if (x == y)
             {
-                if(rem%2==0)
+                if (rem % 2 == 0)
                 {
-                    cout<<k;
+                    cout << k;
                 }
                 else
                 {
-                    cout<<k-2;
+                    cout << k - 2;
                 }
-                
             }
             else
             {
-                cout<<d+(rem/2)*2;
+                cout << d + (rem / 2) * 2;
             }
-            
-            
         }
-        cout<<"\n";
+        cout << "\n";
     }
     return 0;
 }
