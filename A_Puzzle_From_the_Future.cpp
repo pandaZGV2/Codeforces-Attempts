@@ -87,9 +87,7 @@ int main(void)
             a[i] = s[i] - '0' + 1;
         }
         ans[0] = 1;
-        int try1 = 2;
-        // while (try1--)
-        // {
+
         for (int i = 1; i < n; i++)
         {
             if ((a[i] + 1) == ans[i - 1] + a[i - 1])
@@ -101,8 +99,7 @@ int main(void)
                 ans[i] = 1;
             }
         }
-        // }
-        // for(int i=0;i<n;i++)
+
 
         for (int i = 0; i < n; i++)
         {
