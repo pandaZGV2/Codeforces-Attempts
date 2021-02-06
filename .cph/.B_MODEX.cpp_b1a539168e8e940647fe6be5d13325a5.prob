@@ -1,0 +1,1 @@
+{"name":"B - MODEX","group":"Virtual Judge - Number Theory Meet 1","url":"https://vjudge.net/contest/414145#problem/B","interactive":false,"memoryLimit":1024,"timeLimit":3000,"tests":[],"testType":"single","input":{"type":"stdin"},"output":{"type":"stdout"},"languages":{"java":{"mainClass":"Main","taskClass":"BMODEX"}},"srcPath":"/home/aaron_cs/Desktop/Codeforces/B_MODEX.cpp"}
