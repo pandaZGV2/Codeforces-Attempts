@@ -74,7 +74,8 @@ int main(void)
     iamspeed;
     string s;
     cin>>s;
-    vi a(1001, 0);
+    vi a(1001, 1);
+    cout<<a.front();
     for(int i=0;i<s.size();i++)
     {
         if(isdigit(s[i]))
@@ -82,20 +83,20 @@ int main(void)
             a[i]=1;
         }
     }
-    for(int i=1;i<=1000;i++)
-    {
-        if(a[i]==1)
-        {
-            if(i<1000 && a[i+1])
-            {
-                i++;
-            }
-            else
-            {
-                cout<<i<<',';
-            }
-        }
-    }
+    // for(int i=1;i<=1000;i++)
+    // {
+    //     if(a[i]==1)
+    //     {
+    //         if(i<1000 && a[i+1])
+    //         {
+    //             i++;
+    //         }
+    //         else
+    //         {
+    //             cout<<i<<',';
+    //         }
+    //     }
+    // }
     
 
     return 0;
