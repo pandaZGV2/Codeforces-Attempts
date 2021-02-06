@@ -79,7 +79,7 @@ int main(void)
     {
         int n;
         cin >> n;
-        vi c(n), a(n), b(n);
+        vector<ll> c(n), a(n), b(n);
         for (int i = 0; i < n; i++)
         {
             cin >> c[i];
@@ -91,13 +91,29 @@ int main(void)
         for (int i = 0; i < n; i++)
         {
             cin >> b[i];
+            if (b[i] > a[i])
+                swap(a[i], b[i]);
         }
-        vector<vector<tuple<int, int, int>>> adj(n);
-        for(int i=1;i<n;i++)
+        ll curr = c[n - 1] - 1;
+        ll highest = -(ll)Inf;
+        for (int i = n - 2; i >= 0; i--)
         {
-            adj[i].pb(mt(0,a[i],))
+            curr += 2;
+            if (a[i + 1] == b[i + 1])
+            {
+                highest = max(highest, curr);
+                curr = c[i] - 1;
+            }
+            else
+            {
+                ll q = a[i + 1] - b[i + 1];
+                highest = max(highest, curr + q);
+                q = c[i] - 1 - q;
+                curr += q;
+                curr = max(curr, c[i] - 1);
+            }
         }
-
+        cout << highest << endl;
     }
 
     return 0;
