@@ -4,15 +4,19 @@ using namespace std;
 
 typedef long long ll;
 
-long long binpow(long long a, long long b, long long m)
+int binwhile(int a, ll b, int modint)
 {
-    if (b == 0)
-        return 1;
-    long long res = binpow(a, b / 2, m);
-    if (b % 2)
-        return (res % m * res % m * a % m) % m;
-    else
-        return (res % m * res % m) % m;
+    int res = 1;
+    while (b > 0)
+    {
+        if (b & 1 == 1)
+        {
+            res = (res * a)%modint;
+        }
+        a = (a * a)%modint;
+        b >>= 1;
+    }
+    return res;
 }
 int main(void)
 {
@@ -21,9 +25,10 @@ int main(void)
     cin >> t;
     while (t--)
     {
-        ll x, y;
+        int x;
+        ll y;
         cin >> x >> y;
-        cout << binpow(x, y, 10) << endl;
+        cout << binwhile(x % 10, y, 10) << endl;
     }
     cin >> z;
     return 0;
