@@ -69,10 +69,11 @@ typedef pair<int, int> pi;
     ios::sync_with_stdio(false); \
     cin.tie(0);                  \
     cout.tie(0);
-bool cmpfunc(const pi &lhs, const pi &rhs)
+bool cmpfunc(const pair<ll,ll> &lhs, const pair<ll,ll> &rhs)
 {
     return lhs.f<rhs.f;
 }
+// #define int long long int
 int main(void)
 {
     iamspeed;
@@ -80,9 +81,9 @@ int main(void)
     cin >> t;
     while (t--)
     {
-        int A, B, n;
+        ll A, B, n;
         cin >> A >> B >> n;
-        vector<pi> a(n);
+        vector<pair<ll, ll>> a(n);
         for (int i = 0; i < n; i++)
         {
             cin >> a[i].f;
