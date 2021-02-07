@@ -69,6 +69,10 @@ typedef pair<int, int> pi;
     ios::sync_with_stdio(false); \
     cin.tie(0);                  \
     cout.tie(0);
+bool cmpfunc(const pi &lhs, const pi &rhs)
+{
+    return lhs.f<rhs.f;
+}
 int main(void)
 {
     iamspeed;
@@ -78,30 +82,35 @@ int main(void)
     {
         int A, B, n;
         cin >> A >> B >> n;
-        vi a(n), b(n);
+        vector<pi> a(n);
         for (int i = 0; i < n; i++)
         {
-            cin >> a[i];
+            cin >> a[i].f;
         }
         for (int i = 0; i < n; i++)
         {
-            cin >> b[i];
+            cin >> a[i].s;
         }
+        sort(a.begin(),a.end(),cmpfunc);
+        // for (int i = 0; i < n; i++)
+        // {
+        //     cout<<a[i].f<<" ";
+        // }cout<<endl;
         for (int i = 0; i < n; i++)
         {
-            int cnt = ceil(b[i] / float(A));
-            B -= (cnt - 1) * a[i];
+            int cnt = ceil(a[i].s / float(A));
+            B -= (cnt - 1) * a[i].f;
             if (B <= 0)
                 break;
             else
             {
-                b[i] = 0;
-                B -= a[i];
+                a[i].s = 0;
+                B -= a[i].f;
             }
             if (B <= 0)
                 break;
         }
-        if(b[n-1]==0)
+        if(a[n-1].s==0)
         {
             cout<<"YES\n";
         }
