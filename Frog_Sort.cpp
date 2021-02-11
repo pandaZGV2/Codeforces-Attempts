@@ -78,36 +78,40 @@ int main(void)
     {
         int n;
         cin >> n;
-        vi a(2 * n, 0);
-        vi b(n, 0);
-        int cnt=0;
-        if (n == 2)
+        vi a(n);
+        vi b(n);
+        vi c(n);
+        vi pos(n);
+        int cnt = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (a[0] == 1)
-                cout << 0 << endl;
-            else
-            {
-                cout << 1 << endl;
-            }
+            cin >> a[i];
+            c[i] = a[i];
+            pos[i] = i;
         }
-        else if(n==3)
+        sort(c.begin(), c.end());
+        int index = 0;
+        int init = 0;
+        for (int i = 0; i < n; i++)
         {
-            for(int i=0;i<n;i++)
-            {
-                if(a[i]!=1)
-                {
-                    if(i==1 && !(a[i]>=a[i-1] && a[i]<=a[i+1]))
-                    {
-                        int j=i;
-                        while(a[j]!=0)
-                        {
-                            j=j+b[a[i]];
-                            cnt++;
-                        }
-                    }
-                }
-            }
+            cin >> b[i];
         }
+        for (int i = 1; i < n; i++)
+        {
+            vi::iterator it = find(a.begin(), a.end(), c[i]);
+            index = distance(a.begin(), it);
+            it = std::find(a.begin(), a.end(), c[i - 1]);
+            init = pos[distance(a.begin(), it)];
+            int curr = index;
+            while (curr <= init)
+            {
+                curr += b[index];
+
+                cnt++;
+            }
+            pos[index] = curr;
+        }
+        cout << cnt << endl;
     }
 
     return 0;
